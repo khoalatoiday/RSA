@@ -1,0 +1,106 @@
+
+header {
+    color: blue;
+    background-color: aliceblue            
+}
+
+#clear {
+    clear: left
+}
+
+/* .help {
+    color: grey
+}         */
+
+td, th {
+    padding: 0px 10px 0px 10px;
+    text-align: left;                   
+}
+
+#enKeyListSpan, #deKeyListSpan {
+    font-weight: bold;
+}
+
+.key {
+    padding: 10px;
+    margin: 1px;
+    font-weight: bold
+}
+
+
+.key-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+
+body{
+    text-align: center;
+    color:#40514E;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.2rem;
+}
+
+#step1{
+    margin: 0;
+    background-color: #e4d3cf;
+    padding: 2%;
+}
+
+.big-heading {
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.5;
+    font-size: 1.5rem;
+    margin-top: 20px;
+  }
+
+#opening{
+    background-color: #9fe6a0;
+    padding: 5% 7%;
+}
+
+#step2{
+    background-color: #9fe6a0;
+    margin: 0;
+    padding: 5% 7%;
+    line-height: 1.5rem;
+}
+
+#step3{
+    background-color: #e4d3cf;
+    margin: 0;
+    padding: 5% 7%;
+}
+
+.keys{
+    margin: 2%;
+}
+
+.card{
+    background-color: #9fe6a0;
+}
+
+#step1 button{
+    position: relative;
+    top: 20px;
+}
+
+#step1 input{
+    background-color: #9fe6a0;
+}
+
+#step2 input{
+    background-color: #e4d3cf;
+}
+
+#step3 input{
+    background-color: #9fe6a0;
+}
+
+#step3 div,p{
+   margin: 16px;
+}
+
+
+
