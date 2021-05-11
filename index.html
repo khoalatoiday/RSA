@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>RSA Calculator by Syed Umar Anis</title>
+    <meta name="description" content="The HTML5 Herald" />
+    <meta name="author" content="SitePoint" />
+
+    <!-- [if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif] -->
+    <script src="js/app.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <section id="opening">
+      <h1>
+        <div id="title">Public Key Cryptography using RSA algorithm</div>
+      </h1>
+      <div id="author">
+        by:
+        <a href="https://www.facebook.com/profile.php?id=100016437167489"
+          >ThanhLC</a
+        >
+      </div>
+      <p class="big-heading">
+        Tool demo cho thuật toán RSA về cách nó hoạt động - khởi tạo khóa, mã
+        hóa tin, giải mã tin.
+      </p>
+      <!-- <div id="clear"></div> -->
+    </section>
+
+    <section id="step1">
+      <h1>Bước # 1:Khởi tạo Private key và Public key</h1>
+      <div class="row">
+        <div class="col-lg-8">
+          <p>Nhập cặp số nguyên tố (P, Q), rồi nhấn tính:</p>
+          <p>
+            P: <input type="text" id="p" /> &nbsp; Q:
+            <input type="text" id="q" />
+          </p>
+          <p>
+            <span
+              >Ví dụ: 11, 13, 17, 19, 23, 29, 191, 193, 197, 199,...
+            </span>
+          </p>
+          </button>
+        </div>
+        <div class="col-lg-4">
+            <button class="btn-lg btn-dark" onclick="calculate()">Tính toán</button>
+        </div>
+      </div>
+      <!-- <p><input type="button" value="Tính toán" onclick="calculate()" /></p> -->
+      <!-- <button id="calculate">Tính toán</button> -->
+
+      <section id="calculateKEYS">
+        <div class="row">
+          <div class="col-lg-1">
+            <h3>Biến</h3>
+          </div>
+          <div class="col-lg-2">
+            <h3>Giá Trị</h3>
+          </div>
+
+          <div class="col-lg-2">
+            <h3>Tên</h3>
+          </div>
+
+          <div class="col-lg-2">
+            <h3>Công Thức</h3>
+          </div>
+
+          <div class="col-lg-5">
+            <h3>Mô tả</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-1">
+            <p>N</p>
+          </div>
+          <div class="col-lg-2">
+            <input type="text" id="n" readonly />
+          </div>
+
+          <div class="col-lg-2">
+            <p>số chia(modulus)</p>
+          </div>
+
+          <div class="col-lg-2">
+            <p>N: P * Q</p>
+          </div>
+
+          <div class="col-lg-5">
+            <p>Tích của hai số nguyên P và Q</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-1">
+            <p>L</p>
+          </div>
+          <div class="col-lg-2">
+            <input type="text" id="l" readonly />
+          </div>
+
+          <div class="col-lg-2">
+            <p>Độ dài(length)</p>
+          </div>
+
+          <div class="col-lg-2">
+            <p>L: (p - 1) * (q - 1)</p>
+          </div>
+
+          <div class="col-lg-5">
+            <p>
+              Ta cũng có thể tính L bằng cách loại bỏ các ước số chung của N và
+              đếm các số còn lại .
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-1">
+            <p>E</p>
+          </div>
+          <div class="col-lg-2">
+            <input type="text" id="e" onchange="encryptorChanged()" />
+          </div>
+
+          <div class="col-lg-2">
+            <p>khóa mã hóa (encryption key)</p>
+          </div>
+
+          <div class="col-lg-2"></div>
+
+          <div class="col-lg-5">
+            <p>
+              Là một số giữa 1 và L mà là
+              <a
+                href="https://en.wikipedia.org/wiki/Coprime_integers"
+                target="_blank"
+                >số cùng nguyên tố
+              </a>
+              với L và N.<span id="enKeyListSpan"></span>
+            </p>
+          </div>
+        </div>
+
+        <div>
+            <div class="row">
+                <div class="col-lg-1">
+                  <p>D</p>
+                </div>
+                <div class="col-lg-2">
+                  <input type="text" id="d" onchange="decryptorChanged()" />
+                </div>
+      
+                <div class="col-lg-2">
+                  <p>khóa giải mã (decryption key)</p>
+                </div>
+      
+                <div class="col-lg-2">
+                  <p>D * E mod L = 1</p>
+                </div>
+      
+                <div class="col-lg-5">
+                  <p>
+                    Dư của tích giữa D và E khi % L (D * E % L = 1)<span
+                      id="deKeyListSpan"
+                    ></span>
+                  </p>
+                </div>
+              </div>
+        </div>
+      </section>
+
+
+
+      <div class="keys">
+        <div class="row">
+            <div class=" col-lg-4">
+                <div class="card pricing-card">
+                  <div class="card-header">
+                    <h3>Private Key (E,N):</h3>
+                  </div>
+                  <div class="card-body">
+                    <p id="private-key" class="key-value"></p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-lg-4">
+                <div class="card  pricing-card">
+                  <div class="card-header">
+                    <h3>Public Key(D,N):</h3>
+                  </div>
+                  <div class="card-body">
+                    <p id="public-key" class="key-value"></p>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    </section>
+    <section id="step2">
+      <h1>Bước # 2: Mã hóa thông điệp</h1>
+      <p>Nhập thông điệp cần mã hóa: <input type="text" id="message" /></p>
+      <button class="btn-lg btn-dark" onclick="encrypt()">Encrypt</button>
+
+      <p>Thông điệp được chuyển thành mã ASCII: <span id="ascii"></span></p>
+      <p>
+        Thông điệp được mã hóa : (thông điệp)^E % N &nbsp; &nbsp; &nbsp;
+        <!--<span class="help">(<a href="http://umaranis.com/2018/07/12/calculate-modular-exponentiation-powermod-in-javascript-ap-n/" >PowerMod</a> can be used to calculate this very fast. Formula is applied on ASCII code of each character.)</span></p> -->
+      </p>
+      <section>
+        <div class="key">
+          <span class="key-label">Thông điệp được mã hóa: </span
+          ><span id="encrypted-msg" class="key-value"></span>
+        </div>
+      </section>
+    </section>
+    <section id="step3">
+      <h1>Bước # 3: Giải mã thông điệp</h1>
+      <p>
+        Nhập thông điệp đã được mã hóa:
+        <input type="text" id="encrypted-msg-textbox" />
+      </p>
+      <button class="btn-lg btn-dark"  onclick="decrypt()">Decrypt</button>
+      <p>
+        Thông điệp được chuyển thành mã ASCII:
+        <span id="ascii-decrypted"></span>
+      </p>
+      <p>
+        Thông điệp giải mã : (thông điệp được mã hóa)^D % N &nbsp; &nbsp; &nbsp;
+        <!--<span class="help">(<a href="http://umaranis.com/2018/07/12/calculate-modular-exponentiation-powermod-in-javascript-ap-n/" >PowerMod</a> can be used to calculate this very fast. Formula is applied on ASCII code of each character.)</span></p> -->
+      </p>
+      <div>
+        <div class="key">
+          <span class="key-label">Thông điệp được giải mã: </span
+          ><span id="decrypted-msg" class="key-value"></span>
+        </div>
+    </div>
+    </section>
+
+  </body>
+</html>
